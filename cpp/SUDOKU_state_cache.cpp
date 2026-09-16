@@ -16,7 +16,7 @@ struct SudokuSolver{
         boxCheck[row/3][col/3][v] = value;
     }
     
-    bool isValid(int row, int col, char c, vector<vector<char>>& board){
+    bool isValid(int row, int col, char c){
         int v = c - '0';
         return !(rowCheck[row][v] || colCheck[col][v] || boxCheck[row/3][col/3][v]);
     }
@@ -27,7 +27,7 @@ struct SudokuSolver{
             for(int j = 0; j < 9; ++j){
                 if(board[i][j] == '.'){
                     for(char c = '1'; c <= '9'; ++c){
-                        if(isValid(i, j, c, board)){
+                        if(isValid(i, j, c)){
                         board[i][j] = c;
                         cache(i, j, c, true);
                         
